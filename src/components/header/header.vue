@@ -1,10 +1,19 @@
 <template>
   <div class="header-box">
-    <div class="header">123</div>
+    <div class="header">
+      <img src="../../assets/img/logo.png" class="back" @click="back" /> 资讯
+    </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  name: 'xc-header',
+  methods: {
+    back() {
+      this.$router.push('/home');
+    }
+  }
+};
 </script>
 <style lang="less" scoped>
 @import url('../../assets/style/color');
@@ -22,6 +31,14 @@ export default {};
     color: #fff;
     text-align: center;
     background-color: @bgColor;
+    .back {
+      position: absolute;
+      left: 0.2rem;
+      top: 0.1rem;
+      display: block;
+      width: 0.3rem;
+      height: auto;
+    }
   }
 }
 </style>
