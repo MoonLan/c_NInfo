@@ -1,8 +1,8 @@
 <template>
-  <div class="home">
+  <div id="info">
     <div class="tab-wraper">
       <div class="tab">
-        <span :class="{active:tabIndex==i}" v-for="(item,i) in menuList" :key="i" @click="changeMenu(i,item.id)">{{item.name}}</span>
+        <span :class="{active:tabIndex==i}" v-for="(item,i) in tabList" :key="i" @click="changeMenu(i,item.id)">{{item.name}}</span>
       </div>
     </div>
     <swiper :options="swiperOption" ref="mySwiper">
@@ -11,42 +11,44 @@
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <div class="home-res">
-      <h1>
-        比赛结果
-      </h1>
-      <ul class="home-res-list">
-        <li>
-          <p class="title">
-            湖人 2018-08-08
-          </p>
-          <ul class="ball-res">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>
-        </li>
-        <li>
-          <p class="title">
-            湖人 2018-08-08
-          </p>
-          <ul class="ball-res">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="home-res">
-      <h1>
-        体育快讯
-      </h1>
+    <div class="news-box">
       <ul class="news-res-list">
+        <li>
+          <span class="left">
+            <h1>湖人vs凯尔特人第七场</h1>
+            <p>第一节................第二节.....第一节................第二节.....第一节................第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节</p>
+          </span>
+          <span class="right">
+            <img src="../../assets/img/1.jpg">
+          </span>
+        </li>
+        <li>
+          <span class="left">
+            <h1>湖人vs凯尔特人第七场</h1>
+            <p>第一节................第二节.....第一节................第二节.....第一节................第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节</p>
+          </span>
+          <span class="right">
+            <img src="../../assets/img/1.jpg">
+          </span>
+        </li>
+        <li>
+          <span class="left">
+            <h1>湖人vs凯尔特人第七场</h1>
+            <p>第一节................第二节.....第一节................第二节.....第一节................第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节</p>
+          </span>
+          <span class="right">
+            <img src="../../assets/img/1.jpg">
+          </span>
+        </li>
+        <li>
+          <span class="left">
+            <h1>湖人vs凯尔特人第七场</h1>
+            <p>第一节................第二节.....第一节................第二节.....第一节................第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节</p>
+          </span>
+          <span class="right">
+            <img src="../../assets/img/1.jpg">
+          </span>
+        </li>
         <li>
           <span class="left">
             <h1>湖人vs凯尔特人第七场</h1>
@@ -80,7 +82,7 @@
 </template>
 <script>
 export default {
-  name: 'home',
+  name: 'info',
   data() {
     return {
       swiperOption: {
@@ -93,26 +95,27 @@ export default {
           disableOnInteraction: false
         }
       },
+      banner: [require('../../assets/img/1.jpg'), require('../../assets/img/2.jpg'), require('../../assets/img/3.jpg')],
       tabIndex: 0,
-      menuList: [
+      tabList: [
         { name: '首页', id: 'home' },
         { name: '资讯', id: 'info' },
-        { name: '赛果', id: 'result' },
+        { name: '资讯', id: 'info' },
         { name: '资讯', id: 'info' },
         { name: '资讯', id: 'info' },
         { name: '资讯', id: 'info' }
-      ],
-      banner: [require('../../assets/img/1.jpg'), require('../../assets/img/2.jpg'), require('../../assets/img/3.jpg')]
+      ]
     };
   },
   methods: {
     changeMenu(v, id) {
       this.tabIndex = v;
-      this.$router.push(`/${id}`);
     }
   }
 };
 </script>
 <style lang="less" scoped>
-@import url('./home');
+.news-box {
+  margin-top: 0.1rem;
+}
 </style>
