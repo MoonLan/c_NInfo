@@ -1,15 +1,17 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
-Vue.use(Router)
-
+import Vue from 'vue';
+import Router from 'vue-router';
+Vue.use(Router);
+const home = r => require.ensure([], () => r(require('../view/home/home')), ' home');
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      redirect: '/home'
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: home
     }
   ]
-})
+});
