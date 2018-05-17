@@ -5,22 +5,22 @@
         <span :class="{active:tabIndex==i}" v-for="(item,i) in menuList" :key="i" @click="changeMenu(i,item.id)">{{item.name}}</span>
       </div>
     </div>
-    <swiper :options="swiperOption" ref="mySwiper">
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(item,i) in banner" :key="i" class="banner">
         <img :src="item" />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <div class="home-res">
+    <div class="home-section">
       <h1>
         比赛结果
       </h1>
-      <ul class="home-res-list">
+      <ul class="home-section-list">
         <li>
-          <p class="title">
+          <p>
             湖人 2018-08-08
           </p>
-          <ul class="ball-res">
+          <ul class="cp-res">
             <li>1</li>
             <li>2</li>
             <li>3</li>
@@ -29,10 +29,10 @@
           </ul>
         </li>
         <li>
-          <p class="title">
+          <p>
             湖人 2018-08-08
           </p>
-          <ul class="ball-res">
+          <ul class="cp-res">
             <li>1</li>
             <li>2</li>
             <li>3</li>
@@ -42,29 +42,11 @@
         </li>
       </ul>
     </div>
-    <div class="home-res">
+    <div class="home-section">
       <h1>
         体育快讯
       </h1>
-      <ul class="news-res-list">
-        <li>
-          <span class="left">
-            <h1>湖人vs凯尔特人第七场</h1>
-            <p>第一节................第二节.....第一节................第二节.....第一节................第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节</p>
-          </span>
-          <span class="right">
-            <img src="../../assets/img/1.jpg">
-          </span>
-        </li>
-        <li>
-          <span class="left">
-            <h1>湖人vs凯尔特人第七场</h1>
-            <p>第一节................第二节.....第一节................第二节.....第一节................第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节</p>
-          </span>
-          <span class="right">
-            <img src="../../assets/img/1.jpg">
-          </span>
-        </li>
+      <ul class="news-list">
         <li>
           <span class="left">
             <h1>湖人vs凯尔特人第七场</h1>

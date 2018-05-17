@@ -12,7 +12,7 @@
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <div class="news-box">
-      <ul class="news-res-list">
+      <ul class="news-list">
         <li>
           <span class="left">
             <h1>湖人vs凯尔特人第七场</h1>

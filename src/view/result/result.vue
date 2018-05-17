@@ -5,16 +5,16 @@
         <span :class="{active:tabIndex==i}" v-for="(item,i) in tabList" :key="i" @click="changeMenu(i,item.id)">{{item.name}}</span>
       </div>
     </div>
-    <div class="result-res">
+    <div class="result-section">
       <h1>
         比赛结果
       </h1>
-      <ul class="result-res-list">
+      <ul class="result-list">
         <li>
           <p class="title">
             湖人 2018-08-08
           </p>
-          <ul class="ball-res">
+          <ul class="cp-res">
             <li>1</li>
             <li>2</li>
             <li>3</li>
@@ -26,7 +26,7 @@
           <p class="title">
             湖人 2018-08-08
           </p>
-          <ul class="ball-res">
+          <ul class="cp-res">
             <li>1</li>
             <li>2</li>
             <li>3</li>

@@ -1,44 +1,61 @@
 <template>
-  <div class="header-box">
+  <div class="header-wrapper">
     <div class="header">
-      <img src="../../assets/img/logo.png" class="back" @click="back" /> 资讯
+      <img src="../../assets/img/logo.png" class="back" @click="goBack" /> 资讯
+      <img src="../../assets/img/home.png" class="more" @click="showMore" />
     </div>
+    <transition enter-active-class="fadeInDown" leave-active-class="fadeOutUp" mode="out-in">
+      <div class="menu" v-if="state">
+        <p>
+          <label>赛果:
+          </label>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+        </p>
+        <p>
+          <label>资讯:</label>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+        </p>
+        <p>
+          <label>其他:</label>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+          <span>test</span>
+        </p>
+      </div>
+    </transition>
   </div>
 </template>
 <script>
 export default {
   name: 'xc-header',
+  data() {
+    return {
+      state: false
+    };
+  },
   methods: {
-    back() {
+    goBack() {
       this.$router.push('/home');
+    },
+    showMore() {
+      this.state = !this.state;
     }
   }
 };
 </script>
 <style lang="less" scoped>
-@import url('../../assets/style/color');
-.header-box {
-  height: 0.4rem;
-  & > .header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 999;
-    width: 100%;
-    height: 0.4rem;
-    line-height: 0.4rem;
-    font-size: 0.16rem;
-    color: #fff;
-    text-align: center;
-    background-color: @bgColor;
-    .back {
-      position: absolute;
-      left: 0.2rem;
-      top: 0.1rem;
-      display: block;
-      width: 0.3rem;
-      height: auto;
-    }
-  }
-}
+@import url('./header');
 </style>

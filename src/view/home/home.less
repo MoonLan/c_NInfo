@@ -1,22 +1,8 @@
 @import url('../../assets/style/color');
 .home {
-  /deep/ .vux-tab-ink-bar {
-    background-color: @bgColor;
-  }
-  /deep/ .vux-tab-item {
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 16.6%;
-    flex: 0 0 16.6%;
-  }
-  &-res-dot {
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    background-color: #5e5e5e;
-  }
-  &-res {
+  &-section {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0.1rem;
     & > h1 {
       position: relative;
       height: 0.4rem;
@@ -33,13 +19,13 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 3px;
+        width: 0.03rem;
         height: 100%;
         background-color: @bgColor;
       }
     }
   }
-  &-res-list {
+  &-section-list {
     width: 100%;
     height: auto;
     & > li {
@@ -50,14 +36,14 @@
       padding: 0 0.15rem;
       box-sizing: border-box;
       p,
-      .ball-res {
+      .cp-res {
         width: 100%;
         height: 0.3rem;
         line-height: 0.3rem;
         font-size: 0.14rem;
         color: #666;
       }
-      .ball-res {
+      .cp-res {
         li {
           display: inline-block;
           width: 0.2rem;
