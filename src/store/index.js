@@ -27,7 +27,16 @@ const store = {
         });
         allRes.push(item);
       });
-      return await Promise.all(allRes);
+      //deal
+      let res = await Promise.all(allRes);
+      if (!res.length) return [];
+      res.forEach(v => {
+        v.data.forEach(v2 => {
+          let result = v2.opencode.replace(/\+/g, ',');
+          v.result = result.split(',');
+        });
+      });
+      return res;
     }
   },
   getters: {}

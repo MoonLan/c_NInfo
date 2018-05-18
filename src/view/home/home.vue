@@ -21,11 +21,7 @@
             {{getLotteryName(item.code)}} {{utils.formatDate(new Date(item.data[0].opentimestamp*1000),'YY-MM-DD')}}
           </p>
           <ul class="cp-res">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
+            <li v-for="(v,k) in item.result" :key="k">{{v}}</li>
           </ul>
         </li>
       </ul>
