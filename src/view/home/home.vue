@@ -13,24 +13,12 @@
     </swiper>
     <div class="home-section">
       <h1>
-        比赛结果
+        开奖公告
       </h1>
       <ul class="home-section-list">
-        <li>
+        <li v-for="(item,i) in lotteryRes" :key="i">
           <p>
-            湖人 2018-08-08
-          </p>
-          <ul class="cp-res">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>
-        </li>
-        <li>
-          <p>
-            湖人 2018-08-08
+            {{getLotteryName(item.code)}} {{utils.formatDate(new Date(item.data[0].opentimestamp*1000),'YY-MM-DD')}}
           </p>
           <ul class="cp-res">
             <li>1</li>
@@ -44,7 +32,7 @@
     </div>
     <div class="home-section">
       <h1>
-        体育快讯
+        热点资讯
       </h1>
       <ul class="news-list">
         <li>
@@ -61,6 +49,8 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex';
+import { lotteryList } from '../../services/lotteryList';
 export default {
   name: 'home',
   data() {
@@ -76,21 +66,33 @@ export default {
         }
       },
       tabIndex: 0,
+      lotteryList: lotteryList,
       menuList: [
         { name: '首页', id: 'home' },
         { name: '资讯', id: 'info' },
-        { name: '赛果', id: 'result' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' }
+        { name: '开奖', id: 'result' },
+        { name: '公益', id: 'info' },
+        { name: '兑奖', id: 'info' },
+        { name: '招募', id: 'info' }
       ],
       banner: [require('../../assets/img/1.jpg'), require('../../assets/img/2.jpg'), require('../../assets/img/3.jpg')]
     };
+  },
+  created() {
+    this.$store.dispatch('home/Info');
+  },
+  computed: {
+    ...mapState({
+      lotteryRes: state => state.lotteryRes
+    })
   },
   methods: {
     changeMenu(v, id) {
       this.tabIndex = v;
       this.$router.push(`/${id}`);
+    },
+    getLotteryName(v) {
+      return lotteryList.find(c => c.key == v).name;
     }
   }
 };

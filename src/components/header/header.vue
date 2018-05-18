@@ -7,14 +7,9 @@
     <transition enter-active-class="fadeInDown" leave-active-class="fadeOutUp" mode="out-in">
       <div class="menu" v-if="state">
         <p>
-          <label>赛果:
+          <label>开奖:
           </label>
-          <span>test</span>
-          <span>test</span>
-          <span>test</span>
-          <span>test</span>
-          <span>test</span>
-          <span>test</span>
+          <span v-for="(item,i) in lotteryList" :key="i">{{item.name}}</span>
         </p>
         <p>
           <label>资讯:</label>
@@ -39,16 +34,18 @@
   </div>
 </template>
 <script>
+import { lotteryList } from "../../services/lotteryList";
 export default {
-  name: 'xc-header',
+  name: "xc-header",
   data() {
     return {
-      state: false
+      state: false,
+      lotteryList: lotteryList
     };
   },
   methods: {
     goBack() {
-      this.$router.push('/home');
+      this.$router.push("/home");
     },
     showMore() {
       this.state = !this.state;
@@ -57,5 +54,5 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import url('./header');
+@import url("./header");
 </style>

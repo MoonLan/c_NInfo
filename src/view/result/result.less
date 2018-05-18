@@ -1,4 +1,4 @@
-@import url('../../assets/style/color');
+@import url("../../assets/style/color");
 .result {
   &-section {
     width: 100%;
@@ -15,7 +15,7 @@
       box-shadow: 0 0 0.2rem 0 #ccc;
       background-color: #fff;
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -29,12 +29,21 @@
     width: 100%;
     height: auto;
     & > li {
+      position: relative;
       width: 100%;
       height: auto;
       margin-bottom: 0.02rem;
       background-color: #fff;
       padding: 0 0.15rem;
       box-sizing: border-box;
+      .xIcon {
+        position: absolute;
+        right: 0.15rem;
+        top: 0.2rem;
+        width: 0.2rem;
+        height: 0.2rem;
+        color: #666;
+      }
       p,
       .cp-res {
         width: 100%;

@@ -2,15 +2,14 @@
   <div class="result">
     <div class="tab-wraper">
       <div class="tab">
-        <span :class="{active:tabIndex==i}" v-for="(item,i) in tabList" :key="i" @click="changeMenu(i,item.id)">{{item.name}}</span>
+        <span :class="{active:tabIndex==i}" v-for="(item,i) in lotteryList" :key="i" @click="changeMenu(i,item.id)">{{item.name}}</span>
       </div>
     </div>
     <div class="result-section">
-      <h1>
-        比赛结果
-      </h1>
       <ul class="result-list">
         <li>
+          <!-- <x-icon type="ios-arrow-up" size="50" class="xIcon"></x-icon> -->
+          <!-- <x-icon type="ios-arrow-down" size="50"  class="xIcon"></x-icon> -->
           <p class="title">
             湖人 2018-08-08
           </p>
@@ -39,19 +38,13 @@
   </div>
 </template>
 <script>
+import { lotteryList } from "../../services/lotteryList";
 export default {
-  name: 'result',
+  name: "result",
   data() {
     return {
       tabIndex: 0,
-      tabList: [
-        { name: '首页', id: 'home' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' }
-      ]
+      lotteryList: lotteryList
     };
   },
   methods: {
@@ -62,5 +55,5 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import url('./result');
+@import url("./result");
 </style>
