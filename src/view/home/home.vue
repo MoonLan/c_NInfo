@@ -12,7 +12,7 @@
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <div class="home-section">
-      <h1>
+      <h1 @click="goResult">
         开奖公告
       </h1>
       <ul class="home-section-list">
@@ -21,7 +21,7 @@
             {{getLotteryName(item.code)}} {{utils.formatDate(new Date(item.data[0].opentimestamp*1000),'YY-MM-DD')}}
           </p>
           <ul class="cp-res">
-            <li v-for="(v,k) in item.result" :key="k">{{v}}</li>
+            <li v-for="(v,k) in item.result" :key="k" :class="{blue:isBlue(item.code,k)}">{{v}}</li>
           </ul>
         </li>
       </ul>
@@ -83,6 +83,18 @@ export default {
     })
   },
   methods: {
+    isBlue(type, k) {
+      if (type == 'ssq' && k == 6) {
+        return true;
+      } else if ((type == 'dlt' && k == 5) || (type == 'dlt' && k == 6)) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    goResult() {
+      this.$router.push('/result');
+    },
     changeMenu(v, id) {
       this.tabIndex = v;
       this.$router.push(`/${id}`);

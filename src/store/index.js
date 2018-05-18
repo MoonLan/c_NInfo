@@ -10,33 +10,44 @@ const store = {
   mutations: {
     ['home/setLotteryRes'](state, payload) {
       state.lotteryRes = payload;
-      console.log(payload);
     }
   },
   actions: {
     async ['home/Info'](context, payload) {
-      let res = await context.dispatch('home/lotteryRes', 1);
-      context.commit('home/setLotteryRes', res);
+      await context.dispatch('home/lotteryRes', 1);
     },
     async ['home/lotteryRes'](context, payload) {
       const allRes = [];
       lotteryList.map(v => {
         const item = new Promise(async r => {
-          let res = await fetchJsonp(`http://f.apiplus.net/${v.key}-${payload}.json`);
-          r(res.json());
+          let res;
+          try {
+            res = await fetchJsonp(`http://f.apiplus.net/${v.key}-${payload}.json`);
+          } catch (e) {
+            res = 'error';
+          }
+          r(res != 'error' ? res.json() : res);
         });
         allRes.push(item);
       });
       //deal
       let res = await Promise.all(allRes);
-      if (!res.length) return [];
+      if (res.indexOf('error') > -1) {
+        setTimeout(() => {
+          context.dispatch('home/lotteryRes', 1);
+        });
+        return false;
+      }
+      if (!res.length) {
+        return [];
+      }
       res.forEach(v => {
         v.data.forEach(v2 => {
           let result = v2.opencode.replace(/\+/g, ',');
           v.result = result.split(',');
         });
       });
-      return res;
+      context.commit('home/setLotteryRes', res);
     }
   },
   getters: {}
