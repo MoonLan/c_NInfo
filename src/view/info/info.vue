@@ -78,11 +78,16 @@
         </li>
       </ul>
     </div>
+    <xc-footer></xc-footer>
   </div>
 </template>
 <script>
+import xcFooter from '@/components/footer/footer';
 export default {
   name: 'info',
+  components: {
+    xcFooter
+  },
   data() {
     return {
       swiperOption: {
@@ -98,12 +103,11 @@ export default {
       banner: [require('../../assets/img/1.jpg'), require('../../assets/img/2.jpg'), require('../../assets/img/3.jpg')],
       tabIndex: 0,
       tabList: [
-        { name: '首页', id: 'home' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' },
-        { name: '资讯', id: 'info' }
+        { name: '省内', id: 'province' },
+        { name: '国内', id: 'inland' },
+        { name: '投注站', id: 'betshop' },
+        { name: '公益', id: 'community' },
+        { name: '故事', id: 'story' }
       ]
     };
   },

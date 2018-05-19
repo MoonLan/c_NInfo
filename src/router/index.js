@@ -4,6 +4,8 @@ Vue.use(Router);
 const home = r => require.ensure([], () => r(require('../view/home/home')), ' home');
 const info = r => require.ensure([], () => r(require('../view/info/info')), ' info');
 const result = r => require.ensure([], () => r(require('../view/result/result')), ' result');
+const expiry = r => require.ensure([], () => r(require('../view/expiry/expiry')), ' expiry');
+const infoDetails = r => require.ensure([], () => r(require('../view/infoDetails/infoDetails')), ' infoDetails');
 export default new Router({
   routes: [
     {
@@ -24,6 +26,16 @@ export default new Router({
       path: '/result',
       name: 'result',
       component: result
+    },
+    {
+      path: '/expiry',
+      name: 'expiry',
+      component: expiry
+    },
+    {
+      path: '/infoDetails/:id',
+      name: 'infoDetails',
+      component: infoDetails
     }
   ]
 });
