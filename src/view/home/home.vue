@@ -12,6 +12,26 @@
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
+    <div class="home-nav">
+      <span>
+        <em>
+          <img src="../../assets/img/notice.png" />
+        </em>
+        <em>公告</em>
+      </span>
+      <span>
+        <em>
+          <img src="../../assets/img/news.png" />
+        </em>
+        <em>资讯</em>
+      </span>
+      <span>
+        <em>
+          <img src="../../assets/img/cup.png" />
+        </em>
+        <em>兑奖</em>
+      </span>
+    </div>
     <div class="home-section">
       <h1 @click="goResult">
         开奖公告
