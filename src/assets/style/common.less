@@ -140,6 +140,14 @@ textarea {
     background-color: @bgColor;
   }
 }
+.noData {
+  height: 0.4rem;
+  line-height: 0.4rem;
+  font-size: 0.14rem;
+  color: #666;
+  background-color: #fff;
+  text-align: center;
+}
 .news-list {
   width: 100%;
   height: auto;
@@ -151,6 +159,10 @@ textarea {
     background-color: #fff;
     padding: 0.1rem 0.15rem;
     box-sizing: border-box;
+    & > div {
+      display: block;
+      width: 100%;
+    }
     & > span {
       display: inline-block;
       vertical-align: top;
@@ -160,10 +172,14 @@ textarea {
         img {
           display: block;
           width: 95%;
-          height: 0.65rem;
+          height: 0.8rem;
           margin: 0 auto;
         }
       }
+    }
+
+    .gray {
+      color: #999;
     }
     h1 {
       width: 100%;
@@ -171,6 +187,9 @@ textarea {
       line-height: 0.3rem;
       font-size: 0.16rem;
       color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     p {
       width: 100%;

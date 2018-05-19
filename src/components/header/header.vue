@@ -1,7 +1,7 @@
 <template>
   <div class="header-wrapper">
     <div class="header">
-      <img src="../../assets/img/logo.png" class="back" @click="goBack" /> 资讯
+      <img src="../../assets/img/logo.png" class="back" @click="goBack" /> 天天资讯
       <img src="../../assets/img/home.png" class="more" @click="showMore" />
     </div>
     <transition enter-active-class="fadeInDown" leave-active-class="fadeOutUp" mode="out-in">
@@ -13,7 +13,7 @@
         </p>
         <p>
           <label>资讯:</label>
-          <span v-for="(item,i) in newsList" :key="i" @click="changeLotteryType(item)">{{item.name}}</span>
+          <span v-for="(item,i) in newsList" :key="i" @click="changeNewsType(item)">{{item.name}}</span>
         </p>
         <p>
           <label>其他:</label>
@@ -45,6 +45,13 @@ export default {
       this.$router.push({
         name: 'result',
         query: { code: item.key }
+      });
+      this.state = !this.state;
+    },
+    changeNewsType(item) {
+      this.$router.push({
+        name: 'info',
+        query: { code: item.id }
       });
       this.state = !this.state;
     },

@@ -13,19 +13,19 @@
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <div class="home-nav">
-      <span>
+      <span @click="$router.push('/result')">
         <em>
           <img src="../../assets/img/notice.png" />
         </em>
         <em>公告</em>
       </span>
-      <span>
+      <span @click="$router.push('/info')">
         <em>
           <img src="../../assets/img/news.png" />
         </em>
         <em>资讯</em>
       </span>
-      <span>
+      <span @click="$router.push('/expiry')">
         <em>
           <img src="../../assets/img/cup.png" />
         </em>
@@ -51,17 +51,26 @@
       <h1>
         热点资讯
       </h1>
-      <ul class="news-list">
-        <li>
+      <ul class="news-list" v-if="newsList.length">
+        <router-link v-for="(item,i) in newsList" :key="i" v-if="item.img" tag="li" :to="{name:'infoDetails',params:{id:item.id}}">
           <span class="left">
-            <h1>湖人vs凯尔特人第七场</h1>
-            <p>第一节................第二节.....第一节................第二节.....第一节................第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节第二节</p>
+            <h1>{{item.title}}</h1>
+            <p>{{item.introduce}}...</p>
+            <p class="gray">{{item.time}}</p>
           </span>
           <span class="right">
-            <img src="../../assets/img/1.jpg">
+            <img :src="`${host}${item.img}`">
           </span>
-        </li>
+        </router-link>
+        <router-link v-else tag="li" :to="{name:'infoDetails',params:{id:item.id}}">
+          <div class="all">
+            <h1>{{item.title}}</h1>
+            <p>{{item.introduce}}...</p>
+            <p class="gray">{{item.time}}</p>
+          </div>
+        </router-link>
       </ul>
+      <div v-else class="noData">暂无数据!</div>
     </div>
     <xc-footer></xc-footer>
   </div>
@@ -69,12 +78,14 @@
 <script>
 import { Loading } from 'vux';
 import { mapState } from 'vuex';
+import { host } from '@/config';
 import xcFooter from '@/components/footer/footer';
 import { lotteryList } from '../../services/lotteryList';
 export default {
   name: 'home',
   data() {
     return {
+      host: host,
       swiperOption: {
         pagination: {
           el: '.swiper-pagination',
@@ -92,9 +103,9 @@ export default {
         { name: '首页', id: 'home' },
         { name: '资讯', id: 'info' },
         { name: '开奖', id: 'result' },
-        { name: '公益', id: 'info' },
+        { name: '公益', id: 'info?code=community' },
         { name: '兑奖', id: 'expiry' },
-        { name: '招募', id: 'info' }
+        { name: '招募', id: 'info?code=betshop' }
       ],
       banner: [require('../../assets/img/1.jpg'), require('../../assets/img/2.jpg'), require('../../assets/img/3.jpg')]
     };
@@ -111,7 +122,8 @@ export default {
   },
   computed: {
     ...mapState({
-      lotteryRes: state => state.lotteryRes
+      lotteryRes: state => state.lotteryRes,
+      newsList: state => state.newsList
     })
   },
   methods: {

@@ -3,25 +3,64 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 import fetchJsonp from 'fetch-jsonp';
 import { lotteryList } from '../services/lotteryList';
+import { host } from '../config';
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 let timer = null;
 const store = {
   state: {
-    lotteryRes: []
+    lotteryRes: [],
+    newsList: []
   },
   mutations: {
     ['home/setLotteryRes'](state, payload) {
       state.lotteryRes = payload;
+    },
+    ['home/newsList'](state, payload) {
+      state.newsList = payload;
     }
   },
   actions: {
     async ['home/Info'](context, payload) {
       await context.dispatch('home/lotteryRes', 1);
+      let res = await context.dispatch('result/newList', {
+        type: 1,
+        page: 1,
+        page_size: 5
+      });
+      context.commit('home/newsList', res ? res : []);
       return true;
     },
     async ['result/lotteryRes'](context, payload) {
       let res;
       try {
         res = await fetchJsonp(`http://f.apiplus.net/${payload}-20.json`);
+      } catch (e) {
+        res = 'error';
+      }
+      if (res == 'error') {
+        return false;
+      }
+      return res.json();
+    },
+    async ['result/newList'](context, payload) {
+      let res;
+      try {
+        res = await fetch(
+          `${host}/1.0/article/list/query?type=${payload.type}&pageno=${payload.page}&pageSize=${payload.page_size}`
+        );
+      } catch (e) {
+        res = 'error';
+      }
+      if (res == 'error') {
+        return false;
+      }
+      return res.json();
+    },
+    async ['result/newsDetails'](context, payload) {
+      let res;
+      try {
+        res = await fetch(`${host}/1.0/article/details/query?id=${payload}`);
       } catch (e) {
         res = 'error';
       }

@@ -45,23 +45,7 @@ export default {
       if (!code) {
         return 0;
       }
-      switch (code) {
-        case 'ssq':
-          return 0;
-          break;
-        case 'dlt':
-          return 1;
-          break;
-        case 'fc3d':
-          return 2;
-          break;
-        case 'pl3':
-          return 3;
-          break;
-        case 'pl5':
-          return 4;
-          break;
-      }
+      return lotteryList.findIndex(c => c.key == code);
     },
     getLotteryName(v) {
       return lotteryList.find(c => c.key == v).name;
