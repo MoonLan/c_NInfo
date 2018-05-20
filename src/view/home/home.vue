@@ -36,7 +36,7 @@
       <h1 @click="goResult">
         开奖公告
       </h1>
-      <ul class="home-section-list">
+      <ul class="home-section-list" v-if="lotteryRes.length>0">
         <router-link v-for="(item,i) in lotteryRes" :key="i" :to="{name:'result',query:{code:item.code}}" tag="li">
           <p>
             {{getLotteryName(item.code)}} {{utils.formatDate(new Date(item.data[0].opentimestamp*1000),'YY-MM-DD')}}
@@ -46,9 +46,10 @@
           </ul>
         </router-link>
       </ul>
+      <div v-else class="noData">数据加载中...</div>
     </div>
     <div class="home-section">
-      <h1>
+      <h1 @click="$router.push('/info')">
         热点资讯
       </h1>
       <ul class="news-list" v-if="newsList.length">
@@ -115,9 +116,9 @@ export default {
     xcFooter
   },
   created() {
-    this.loading = true;
+    // this.loading = true;
     this.$store.dispatch('home/Info').then(r => {
-      this.loading = false;
+      // this.loading = false;
     });
   },
   computed: {

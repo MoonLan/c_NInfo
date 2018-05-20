@@ -19,6 +19,7 @@
           <label>其他:</label>
           <router-link :to="{path:'/expiry'}" tag="span">兑奖</router-link>
         </p>
+        <em @click="state=false">收起</em>
       </div>
     </transition>
   </div>
@@ -65,6 +66,8 @@ export default {
   watch: {
     $route() {
       this.state && (this.state = !this.state);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     }
   }
 };

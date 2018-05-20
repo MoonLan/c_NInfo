@@ -22,13 +22,13 @@ const store = {
   },
   actions: {
     async ['home/Info'](context, payload) {
-      await context.dispatch('home/lotteryRes', 1);
       let res = await context.dispatch('result/newList', {
         type: 1,
         page: 1,
         page_size: 5
       });
       context.commit('home/newsList', res ? res : []);
+      context.dispatch('home/lotteryRes', 1);
       return true;
     },
     async ['result/lotteryRes'](context, payload) {
