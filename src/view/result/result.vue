@@ -2,7 +2,7 @@
   <div class="result">
     <loading :show="loading" text="加载中"></loading>
     <div class="tab-wraper">
-      <div class="tab">
+      <div class="tab halfBorderBB">
         <span :class="{active:tabIndex==i}" v-for="(item,i) in lotteryList" :key="i" @click="changeMenu(i,item.id)">{{item.name}}</span>
       </div>
     </div>

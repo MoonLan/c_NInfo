@@ -2,7 +2,7 @@
   <div class="home">
     <loading :show="loading" text="加载中"></loading>
     <div class="tab-wraper">
-      <div class="tab">
+      <div class="tab halfBorderBB">
         <span :class="{active:tabIndex==i}" v-for="(item,i) in menuList" :key="i" @click="changeMenu(i,item.id)">{{item.name}}</span>
       </div>
     </div>
@@ -13,23 +13,41 @@
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <div class="home-nav">
-      <span @click="$router.push('/result')">
+      <span class="halfBorderB" @click="$router.push('/result')">
         <em>
           <img src="../../assets/img/notice.png" />
         </em>
-        <em>公告</em>
+        <em>
+          <span>公告</span>
+          <i>各种彩种开奖数据</i>
+        </em>
       </span>
-      <span @click="$router.push('/info')">
+      <span class="halfBorderL" @click="$router.push('/info')">
         <em>
           <img src="../../assets/img/news.png" />
         </em>
-        <em>资讯</em>
+        <em>
+          <span>资讯</span>
+          <i>大奖公布,促销活动</i>
+        </em>
       </span>
-      <span @click="$router.push('/expiry')">
+      <span class="halfBorderR" @click="$router.push('/expiry')">
         <em>
           <img src="../../assets/img/cup.png" />
         </em>
-        <em>兑奖</em>
+        <em>
+          <span>兑奖</span>
+          <i>兑奖须知信息详情</i>
+        </em>
+      </span>
+      <span @click="$router.push('/info?code=betshop')">
+        <em>
+          <img src="../../assets/img/zm.png" />
+        </em>
+        <em>
+          <span>招募</span>
+          <i>各地站点招募信息</i>
+        </em>
       </span>
     </div>
     <div class="home-section">

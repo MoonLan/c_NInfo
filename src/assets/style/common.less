@@ -101,16 +101,16 @@ textarea {
 }
 
 .tab-wraper {
-  height: 0.4rem;
+  height: 0.45rem;
 }
 .tab {
   position: fixed;
   left: 0;
-  top: 0.4rem;
+  top: 0.45rem;
   z-index: 999;
   width: 100%;
-  height: 0.4rem;
-  line-height: 0.4rem;
+  height: 0.45rem;
+  line-height: 0.45rem;
   background-color: #fff;
   display: flex;
   span {
@@ -206,4 +206,74 @@ textarea {
       -webkit-box-orient: vertical;
     }
   }
+}
+.halfBorderL:after {
+  content: '  ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
+  height: 200%;
+  border-bottom: 1px solid #dedede;
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.halfBorderR:after {
+  content: '  ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
+  height: 200%;
+  border-right: 1px solid #dedede;
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.halfBorderBB:after {
+  content: '  ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 200%;
+  height: 200%;
+  border-bottom: 1px solid #dedede;
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.halfBorderB:after {
+  content: '  ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
+  height: 200%;
+  border-bottom: 1px solid #dedede;
+  border-right: 1px solid #dedede;
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
