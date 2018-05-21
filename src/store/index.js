@@ -7,6 +7,7 @@ import { host } from '../config';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 let timer = null;
+let sessionTimer = null;
 const store = {
   state: {
     lotteryRes: [],
@@ -71,6 +72,16 @@ const store = {
     },
     async ['home/lotteryRes'](context, payload) {
       clearInterval(timer);
+      let sInfo = window.sessionStorage.getItem('lotteryRes');
+      if (sInfo) {
+        context.commit('home/setLotteryRes', JSON.parse(sInfo));
+        if (!sessionTimer) {
+          sessionTimer = setTimeout(() => {
+            window.sessionStorage.removeItem('lotteryRes');
+          }, 3600000);
+        }
+        return sInfo;
+      }
       const allRes = [];
       lotteryList.map(v => {
         const item = new Promise(async r => {
@@ -101,6 +112,10 @@ const store = {
           v.result = result.split(',');
         });
       });
+      window.sessionStorage.setItem('lotteryRes', JSON.stringify(res));
+      sessionTimer = setTimeout(() => {
+        window.sessionStorage.removeItem('lotteryRes');
+      }, 3600000);
       context.commit('home/setLotteryRes', res);
       return res;
     }
