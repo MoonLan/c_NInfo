@@ -57,7 +57,8 @@
       <ul class="home-section-list" v-if="lotteryRes.length>0">
         <router-link v-for="(item,i) in lotteryRes" :key="i" :to="{name:'result',query:{code:item.code}}" tag="li">
           <p>
-            {{getLotteryName(item.code)}} {{utils.formatDate(new Date(item.data[0].opentimestamp*1000),'YY-MM-DD')}}
+            {{getLotteryName(item.code)}} 第{{item.data[0].expect}}期
+            <!-- {{utils.formatDate(new Date(item.data[0].opentimestamp*1000),'YY-MM-DD')}} -->
           </p>
           <ul class="cp-res">
             <li v-for="(v,k) in item.result" :key="k" :class="{blue:isBlue(item.code,k)}">{{v}}</li>

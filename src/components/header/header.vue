@@ -10,7 +10,6 @@
           <label>开奖:
           </label>
           <span v-for="(item,i) in lotteryList" :key="i" @click="changeLotteryType(item)">{{item.name}}</span>
-          <span>排列五</span>
         </p>
         <p>
           <label>资讯:</label>
